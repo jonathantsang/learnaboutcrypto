@@ -1,6 +1,8 @@
 var AYLIENTextAPI = require('aylien_textapi')
 var express = require('express')
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var request = require('request-promise');
+var Promise = require("bluebird");
 var app = express()
 
 // parse application/x-www-form-urlencoded
@@ -11,7 +13,7 @@ app.use(bodyParser.json())
 
 app.use(express.static('public'));
 
-var ccs = [];
+var arr = [];
 
 var textapi = new AYLIENTextAPI({
   application_id: "892e2f66",
@@ -29,21 +31,26 @@ function Summarize(textcomponent, size){
     	response.sentences.forEach(function(s) {
       		console.log(s);
       		arr.push(s);
-    	});
-    	return s; // TEST
+    	 if(arr.length > 0){
+        return s; // TEST
+       }
+      });
   	}
 	});
 }
 
 // Concepts
 function Concept(textcomponent){
-  ccs = [];
-	return textapi.concepts({
-  text: textcomponent
-	}, function(error, response) {
-  	if (error === null) {
-    	Object.keys(response.concepts).forEach(function(concept) {
-      	var surfaceForms = response.concepts[concept].surfaceForms.map(function(sf) {
+  var ccs = [];
+  return new Promise(function(resolve, reject) {
+        //var result = 'A is done'
+        //resolve(result);
+        textapi.concepts({
+          text: textcomponent
+        }, function(error, response) {
+        if (error === null) {
+          Object.keys(response.concepts).forEach(function(concept) {
+        var surfaceForms = response.concepts[concept].surfaceForms.map(function(sf) {
         return sf['string'];
         });
         var final = concept + ": " + surfaceForms.join(",");
@@ -52,11 +59,13 @@ function Concept(textcomponent){
           console.log("loaded");
           console.log(ccs);
           console.log("send concepts");
-          return ccs;
+          arr = ccs;
+          resolve(ccs);
         }
       });
     }
-	});
+  });
+  })
 }
 
 
@@ -65,10 +74,11 @@ app.get('/', (req, res) => res.send('index.html'));
 app.post("/", function (req, res) {
     console.log("posting");
     // Calls API
-    Concept(req.body.name).then(arr => { res.json(arr) }).catch(err => {console.log(err)});
-    // Load arr before it is sent
-    console.log("arr");
-    console.log(arr);
+    Concept(req.body.name).then(function(){
+      res.send(arr);
+    });
+    console.log(Concept(req.body.name));
+    // Make sure arr is changed before res.json is called
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
