@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Learn About Crypto!</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+		/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+		.button {
+    background-color: #2E86C1;
+    border: none;
+    color: yellow;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+		body {
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form.cryptoSearch input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.cryptoSearch button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.cryptoSearch button:hover {
+    background: #0b7dda;
+}
+
+form.cryptoSearch::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+		table {
+			border-collapse: collapse;
+		}
+		table, th, td {
+			border: 1px solid black;
+			text-align:; left;
+		}
+		th, td {
+			padding: 15px;
+		}
+		tr:nth-child(even) {background-color: #2E86C1;}
+		tr:nth-child(odd) {background-color: #17A589;}
+		tr:hover {background-color:#F4D03F;}
+		h1 {
+			color:#E74C3C;
+		}
+		</style>
+	</head>
+	<body>
+
+		<h1>Coins Available:</h1>
+		<form class="cryptoSearch" action="/action_page.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Learn More..." name="search2">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+		<table style="width:100%">
+			<tr>
+				<th>Rank</th>
+				<th>Type</th>
+			</tr>
+				<td>1</td>
+				<td><button id="myBtn">Bitcoin</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+			</tr>
+			</tr>
+				<td>2</td>
+				<td><button id="myBtn">Bitcoin</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+			</tr>
+			</tr>
+				<td>3</td>
+				<td><a href="#"><button>Ripple</button></a>
+  </td>
+			</tr>
+			</tr>
+				<td>4</td>
+				<td><a href="#"><button>Bitcoin Cash</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>5</td>
+				<td><a href="#"><button>Cardano</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>6</td>
+				<td><a href="#"><button>Litecoin</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>7</td>
+				<td><a href="#"><button>NEM</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>8</td>
+				<td><a href="#"><button>NEO</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>9</td>
+				<td><a href="#"><button>Stellar</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>10</td>
+				<td><a href="#"><button>EOS</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>11</td>
+				<td><a href="#"><button>IOTA</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>12</td>
+				<td><a href="#"><button>Dash</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>13</td>
+				<td><a href="#"><button>Monero</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>14</td>
+				<td><a href="#"><button>TRON</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>15</td>
+				<td><a href="#"><button>ICON</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>16</td>
+				<td><a href="#"><button>Bitcoin Gold</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>17</td>
+				<td><a href="#"><button>Qtum</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>18</td>
+				<td><a href="#"><button>Ethereum Classic</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>19</td>
+				<td><a href="#"><button>Lisk</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>20</td>
+				<td><a href="#"><button>RaiBlocks</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>21</td>
+				<td><a href="#"><button>VeChain</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>22</td>
+				<td><a href="#"><button>OmiseGO</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>23</td>
+				<td><a href="#"><button>Populous</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>24</td>
+				<td><a href="#"><button>ZCash</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>25</td>
+				<td><a href="#"><button>Binance Coin</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>26</td>
+				<td><a href="#"><button>Verge</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>27</td>
+				<td><a href="#"><button>Tether</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>28</td>
+				<td><a href="#"><button>Stratis</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>29</td>
+				<td><a href="#"><button>Siacoin</button>
+</a> </td>
+			</tr>
+			</tr>
+				<td>30</td>
+				<td><a href="#"><button>Bytecoin</button>
+</a> </td>
+			</tr>
+
+	</body>
+</html>
