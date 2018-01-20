@@ -67,6 +67,12 @@ form.cryptoSearch::after {
         </div>
         <div class="modal-body">
           <p>Some text in the modal.</p>
+          <div id="summary">
+          <p>Some text in the modal.</p>
+          </div>
+          <div id="concept">
+          <p>Some text in the modal.</p>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="notapi" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -250,7 +256,7 @@ $(document).ready( function (){
     		return false;
     	}
     	console.log("submitted");
-		$.post("/", { name: id, text: query.text() })
+		$.post("/summary", { name: id, text: query.text() })
 			.done(function( data ) {
 				console.log("received");
     			console.log(data);
@@ -259,7 +265,16 @@ $(document).ready( function (){
     			$("#myModal").modal('show');
 
     			// Populate the modal
+    			$('#summary').append("<p>" + data[0] + "</p>");
 
+  			});
+  		$.post("/concept", { name: id, text: query.text() })
+			.done(function( data ) {
+				console.log("received");
+    			console.log(data);
+
+    			// Populate the modal
+    			$('#concept').append("<p>" + data[0] + "</p>");
 
   			});
 		return false;
