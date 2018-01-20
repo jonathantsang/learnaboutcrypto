@@ -14,6 +14,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'));
 
 var arr = [];
+var summary = "";
 
 var textapi = new AYLIENTextAPI({
   application_id: "892e2f66",
@@ -21,26 +22,35 @@ var textapi = new AYLIENTextAPI({
 });
 
 // Summarize
-function Summarize(textcomponent, size){
-  var arr = [];
-	textapi.summarize({
-  		text: textcomponent,
-  		sentences_number: size
-	}, function(error, response) {
-  	if (error === null) {
-    	response.sentences.forEach(function(s) {
-      		console.log(s);
-      		arr.push(s);
-    	 if(arr.length > 0){
-        return s; // TEST
+function Summarize(name, textcomponent, size){
+  var smm = [];
+  arr = [];
+  console.log("summ");
+  return new Promise(function(resolve, reject) {
+	   textapi.summarize({
+      text: textcomponent,
+      title: name,
+      sentences_number: size
+    }, function(error, response) {
+    if (error === null) {
+      response.sentences.forEach(function(s) {
+        console.log(s);
+        smm.push(s);
+      if(smm.length > size-1){
+        console.log("summary sentences");
+        arr = smm;
+        resolve(smm); // TEST
        }
       });
-  	}
-	});
+    } else {
+      console.log(error);
+    }
+    });
+  });
 }
 
 // Concepts
-function Concept(textcomponent){
+function Concept(name, textcomponent){
   var ccs = [];
   return new Promise(function(resolve, reject) {
         //var result = 'A is done'
@@ -63,9 +73,11 @@ function Concept(textcomponent){
           resolve(ccs);
         }
       });
-    }
+      } else {
+        console.log(error);
+      }
   });
-  })
+  });
 }
 
 
@@ -74,10 +86,13 @@ app.get('/', (req, res) => res.send('index.html'));
 app.post("/", function (req, res) {
     console.log("posting");
     // Calls API
-    Concept(req.body.name).then(function(){
+    /*Concept(req.body.name, req.body.text).then(function(){
       res.send(arr);
     });
-    console.log(Concept(req.body.name));
+    */
+    Summarize(req.body.name, req.body.text, 5).then(function(){
+      res.send(arr);
+    });
     // Make sure arr is changed before res.json is called
 });
 
