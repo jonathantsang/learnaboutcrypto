@@ -1,0 +1,24 @@
+{
+  "name": "learnaboutcrypto",
+  "version": "1.0.0",
+  "description": "need: - front end - back end, aylien summary",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathantsang/learnaboutcrypto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathantsang/learnaboutcrypto/issues"
+  },
+  "homepage": "https://github.com/jonathantsang/learnaboutcrypto#readme",
+  "dependencies": {
+    "aylien_textapi": "^0.6.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}

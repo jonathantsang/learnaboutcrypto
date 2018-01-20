@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+<button id="bitcoin">Bitcoin</button>
+<button>Ethereum</button>
+<button>Ripple</button>
+
+
+</body>
+
+<script>
+$(document).ready( function (){
+	console.log("ready");
+	// When the button is pressed, query the tickers
+	$('#bitcoin').click(function() {
+		var query = $('#bitcoin');
+		console.log("submitted");
+		console.log(query.text());
+		$.post("/", { name: query.text() })
+			.done(function( data ) {
+    			console.log(data);
+  			});
+		return false;
+	});
+});
+
+</script>
+</html>
