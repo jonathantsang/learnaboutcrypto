@@ -1,7 +1,13 @@
 var AYLIENTextAPI = require('aylien_textapi')
 var express = require('express')
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')
 var app = express()
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.use(express.static('public'));
 
@@ -49,8 +55,10 @@ function Concept(textcomponent){
 app.get('/', (req, res) => res.send('index.html'));
 
 app.post("/", function (req, res) {
-    console.log(req.body);
-    res.send(req.body);
+    console.log(req.body.name);
+    console.log("posting");
+    res.send(Concept(req.body.name));
 });
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log('Example app listening on port 3000!'));
+
