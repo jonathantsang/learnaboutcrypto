@@ -11,6 +11,8 @@ app.use(bodyParser.json())
 
 app.use(express.static('public'));
 
+var ccs = [];
+
 var textapi = new AYLIENTextAPI({
   application_id: "892e2f66",
   application_key: "388734a6bf18a5d57932d16b245d9d0a"
@@ -18,12 +20,12 @@ var textapi = new AYLIENTextAPI({
 
 // Summarize
 function Summarize(textcomponent, size){
+  var arr = [];
 	textapi.summarize({
   		text: textcomponent,
   		sentences_number: size
 	}, function(error, response) {
   	if (error === null) {
-  		var arr = [];
     	response.sentences.forEach(function(s) {
       		console.log(s);
       		arr.push(s);
@@ -35,19 +37,25 @@ function Summarize(textcomponent, size){
 
 // Concepts
 function Concept(textcomponent){
-	textapi.concepts({
+  ccs = [];
+	return textapi.concepts({
   text: textcomponent
 	}, function(error, response) {
   	if (error === null) {
     	Object.keys(response.concepts).forEach(function(concept) {
       	var surfaceForms = response.concepts[concept].surfaceForms.map(function(sf) {
         return sf['string'];
+        });
+        var final = concept + ": " + surfaceForms.join(",");
+        ccs.push(final);
+        if(ccs.length > 3){
+          console.log("loaded");
+          console.log(ccs);
+          console.log("send concepts");
+          return ccs;
+        }
       });
-      var final = concept + ": " + surfaceForms.join(",");
-      console.log(final);
-      return final;
-    });
-  }
+    }
 	});
 }
 
@@ -55,9 +63,12 @@ function Concept(textcomponent){
 app.get('/', (req, res) => res.send('index.html'));
 
 app.post("/", function (req, res) {
-    console.log(req.body.name);
     console.log("posting");
-    res.send(Concept(req.body.name));
+    // Calls API
+    Concept(req.body.name).then(arr => { res.json(arr) }).catch(err => {console.log(err)});
+    // Load arr before it is sent
+    console.log("arr");
+    console.log(arr);
 });
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));

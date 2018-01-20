@@ -24,9 +24,10 @@ $(document).ready( function (){
 	$('#bitcoin').click(function() {
 		var query = $('.bitcoin');
 		console.log("submitted");
-		console.log(query.text());
+		// console.log(query.text());
 		$.post("/", { name: query.text() })
 			.done(function( data ) {
+				console.log("received");
     			console.log(data);
   			});
 		return false;
