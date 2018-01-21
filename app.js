@@ -83,18 +83,23 @@ function Concept(name, textcomponent){
 
 app.get('/', (req, res) => res.send('index.html'));
 
-app.post("/", function (req, res) {
+app.post("/summary", function (req, res) {
     console.log("posting");
     // Calls API
-    /*Concept(req.body.name, req.body.text).then(function(){
-      res.send(arr);
-    });
-    */
     Summarize(req.body.name, req.body.text, 5).then(function(){
       res.send(arr);
     });
     // Make sure arr is changed before res.json is called
 });
+app.post("/concept", function (req, res) {
+    console.log("posting");
+    // Calls API
+    Concept(req.body.name, req.body.text).then(function(){
+      res.send(arr);
+    });
+    // Make sure arr is changed before res.json is called
+});
+
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
 
