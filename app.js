@@ -81,7 +81,7 @@ function Concept(name, textcomponent){
 }
 
 
-app.get('/', (req, res) => res.send('index.html'));
+app.get('/', (req, res) => res.send('index.php'));
 
 app.post("/summary", function (req, res) {
     console.log("posting");
