@@ -86,7 +86,7 @@ app.get('/', (req, res) => res.send('index.php'));
 app.post("/summary", function (req, res) {
     console.log("posting");
     // Calls API
-    Summarize(req.body.name, req.body.text, 5).then(function(){
+    Summarize(req.body.name, req.body.text, 7).then(function(){
       res.send(arr);
     });
     // Make sure arr is changed before res.json is called
