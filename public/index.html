@@ -15,7 +15,11 @@
 	}
 	body {
     	font-family: Arial;
-	}	
+	}
+	table.center {
+    	margin-left:auto; 
+    	margin-right:auto;
+  	}
 form.cryptoSearch input[type=text] {
     padding: 10px;
     font-size: 17px;
@@ -54,7 +58,8 @@ form.cryptoSearch::after {
   <input type="text" placeholder="Learn More..." name="search2">
   <button type="submit"><i class="fa fa-search"></i></button>
 
-<p></p>
+<br>
+<br>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -83,15 +88,17 @@ form.cryptoSearch::after {
 </div>
 
 </form>
-		<table style="width:100%">
+		<table class="center" style="width:80%">
 			<tr>
 				<th>Rank</th>
-				<th>Logo</th>
+				<th></th>
 				<th>Type</th>
+				<th>Link</th>
 			</tr>
 				<td>1</td>
 				<td><img src="../Logos/Bitcoin.jpg" alt="Bitcoin"> </td>
-				<td><button id="a1" type="button" class="btn btn-lg">Bitcoin</button>
+				<td><button id="a1" type="button" class="btn btn-lg">Bitcoin</button></td>
+				<td><a href="#">Link</a>
 
 			</tr>
 			</tr>
@@ -108,44 +115,41 @@ form.cryptoSearch::after {
 			</tr>
 				<td>4</td>
 				<td><img src="../Logos/Bitcoin_Cash.png" alt="Mountain View"></td>
-				<td><button id="a4" type="button" class="btn btn-lg">Bitcoin Cash</button>
-</a> </td>
+				<td><button id="a4" type="button" class="btn btn-lg">Bitcoin Cash</button></td>
 			</tr>
 			</tr>
 				<td>5</td>
 				<td><img src="../Logos/Cardano.jpg" alt="Mountain View"></td>
-				<td><button id="a5" type="button" class="btn btn-lg">Cardano</button>
-</a> </td>
+				<td><button id="a5" type="button" class="btn btn-lg">Cardano</button></td>
 			</tr>
 			</tr>
 				<td>6</td>
 				<td><img src="../Logos/Litecoin.svg" alt="Mountain View"></td>
-				<td><button id="a6" type="button" class="btn btn-lg">Litecoin</button>
-</a> </td>
+				<td><button id="a6" type="button" class="btn btn-lg">Litecoin</button></td>
 			</tr>
 			</tr>
 				<td>7</td>
 				<td><img src="../Logos/NEM.svg" alt="Mountain View"></td>
 				<td><button id="a7" type="button" class="btn btn-lg">NEM</button>
-</a> </td>
+</td>
 			</tr>
 			</tr>
 				<td>8</td>
 				<td><img src="../Logos/NEO.jpg" alt="Mountain View"></td>
 				<td><button id="a8" type="button" class="btn btn-lg">NEO</button>
-</a> </td>
+</td>
 			</tr>
 			</tr>
 				<td>9</td>
 				<td><img src="../Logos/Stellar.png" alt="Mountain View"></td>
 				<td><button id="a9" type="button" class="btn btn-lg">Stellar</button>
-</a> </td>
+</td>
 			</tr>
 			</tr>
 				<td>10</td>
 				<td><img src="../Logos/EOS.svg" alt="Mountain View"></td>
-				<td><button id="a10" type="button" class="btn btn-lg">EOS</button>
-</a> </td>
+				<td><button id="a10" type="button" class="btn btn-lg">EOS</button></td>
+				<td></td>
 			</tr>
 			</tr>
 				<td>11</td>
@@ -345,9 +349,13 @@ $(document).ready( function (){
     			// clear previous
     			$('#concept').empty();
 				$('#concept').append('<h2>Useful Terms</h2>');
-    			// Populate the modal
+    			// Populate the modal with each data term
     			for (var i = data.length - 1; i >= 0; i--) {
     				var splitup = data[i].split(" ");
+    				// For each spaced word in data[1] onwards
+    				for (var t = 2; t < splitup.length; t++) {
+    					splitup[1] += " " + splitup[t];
+    				}
     				// Get rid of ':'
     				$('#concept').append("<a href=" + splitup[0].substr(0,splitup[0].length-1) + "><p>" + splitup[1] + "</p></a>");
     			}
