@@ -1,11 +1,11 @@
 # learnaboutcrypto
 
 need:
-- front end
-- back end, aylien summary
-- set up aws site
-- set up domain.com
+- front end x
+- back end, aylien summary x
+- set up aws site 
+- word definition, dictionary
 
 extra:
-- dictionary
+- set up domain.com
 - coinhive incentive
