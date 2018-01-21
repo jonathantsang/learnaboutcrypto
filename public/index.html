@@ -49,12 +49,42 @@ form.cryptoSearch::after {
 		h1 {
 			color:#E74C3C;
 		}
+		ul {
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #333;
+		}
+
+		li {
+		    float: left;
+		}
+
+		li a {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+
+		/* Change the link color to #111 (black) on hover */
+		li a:hover {
+		    background-color: #111;
+		}
 </style>
 	</head>
 	<body>
 
-		<h1>Cryptopedia</h1>
-		<p>Making information about cryptocurrencies more accessible to educate everyone.<p>
+	<ul>
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/about">About</a></li>
+	  <li><a href="/dev">Development</a></li>
+	</ul>
+
+		<h1 style="padding-left: 4cm">Cryptopedia</h1>
+		<p style="padding-left: 4cm">Making information about cryptocurrencies more accessible to everyone.<p>
 		<!--
 		<form class="cryptoSearch" style="margin:auto;max-width:300px">
   <input type="text" placeholder="Learn More..." name="search2">
@@ -91,6 +121,9 @@ form.cryptoSearch::after {
 </div>
 
 </form>
+
+
+
 		<table class="center" style="width:80%">
 			<tr>
 				<th>Rank</th>

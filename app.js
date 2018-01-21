@@ -81,7 +81,7 @@ function Concept(name, textcomponent){
 }
 
 
-app.get('/', (req, res) => res.send('index.php'));
+app.get('/', (req, res) => res.send('index.html'));
 
 app.post("/summary", function (req, res) {
     console.log("posting");
@@ -99,6 +99,11 @@ app.post("/concept", function (req, res) {
     });
     // Make sure arr is changed before res.json is called
 });
+
+app.get("/dev", function(req, res){
+  console.log("dev");
+  res.send('development.html');
+})
 
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'));
